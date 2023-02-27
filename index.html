@@ -1,18 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-      <link href="./assets/css/reset.css" rel="stylesheet">
-      <link href="./assets/css/style.css" rel="stylesheet">
-      <link href="./assets/css/hover.css" rel="stylesheet">
-   </head>
-   <body>
-      <header></header>
-      <main></main>
-      <footer></footer>
-      <script src="./assets/js/script.js"></script>
-   </body>
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link href="./assets/css/reset.css" rel="stylesheet">
+   <link href="./assets/css/style.css" rel="stylesheet">
+   <link href="./assets/css/hover.css" rel="stylesheet">
+</head>
+
+<body>
+   <header>
+      <!-- Has clock, has reset, has return to start? -->
+      <button id="viewhighscores">view highscores</button>
+      <button id="resetquiz">restart quiz</button>
+   </header>
+   <main>
+      <!-- Has the start button, instructions -->
+      <section id="instructions">
+         <h1>SCIENCE QUIZ</h1>
+         <p>description of the rules</p>
+         <button>START QUIZ</button>
+      </section>
+
+      <section id="questions">
+         <p id="timer">90</p>
+         <p id="scoreboard">0</p>
+         <!-- is a boxes section with a question, maybe an image? and the four questions -->
+         <div>
+            <h2 class="titletext">QUESTION <span>#</span></h2>
+
+         </div>
+
+         <p class="questiontext">question text</p>
+         <div class="questiondiv">
+            <button class="hvr-grow"></button>
+            <button class="hvr-grow"></button>
+         </div>
+         <div class="questiondiv">
+            <button class="hvr-grow"></button>
+            <button class="hvr-grow"></button>
+         </div>
+      </section>
+      <section id="scoreinput">
+         <h2>enter score</h2>
+         <p>score</p>
+         <label for="fname">First name:</label>
+         <input type="text" id="fname" name="fname">
+         <button>enter</button>
+      </section>
+      <section id="highscores">
+         <h2>high score</h2>
+         <ol>
+         </ol>
+         <button>reset highscores</button>
+      </section>
+   </main>
+   <footer>
+      <!-- Just copyright -->
+   </footer>
+   <script src="./assets/js/script.js"></script>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
 </html>

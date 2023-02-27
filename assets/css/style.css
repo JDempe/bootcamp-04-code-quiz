@@ -1,0 +1,87 @@
+body {
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   background-image: url("../images/use-svg-as-background-image-particle-strokes.svg");
+}
+
+header {
+   padding: 5px 0px;
+   position: sticky;
+   top: 0;
+   width: 100%;
+   height: 60px;
+   background-color: rgba(0, 0, 0, 0.65);
+   backdrop-filter: blur(20px);
+   z-index: 9;
+}
+
+main {
+   position: relative;
+   margin: 100px auto 0px auto;
+   width: 50%;
+   height: auto;
+   border-color: black;
+   border-width: 5px;
+   border-style: solid;
+   border-radius: 20px;
+   background-color: aliceblue;
+}
+
+section {
+   /* width: 100%;
+   height: 100%; */
+}
+
+#instructions {
+
+}
+
+#questions {
+   display: none;
+}
+
+#scoreinput {
+   display: none;
+}
+
+#highscores {
+   display: none;
+   margin: 0px 40%;
+}
+
+#scoreboard {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   z-index: 9;
+   margin: 20px;
+   text-align: end;
+}
+
+#timer {
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   z-index: 9;
+   margin: 20px;
+   text-align: end;
+}
+
+section .questiondiv {
+   display: inline-block;
+}
+
+.questiontext {
+   display: block;
+   margin: 20px;
+}
+
+#questions button {
+   border-radius: 10px;
+   width: 150px;
+   height: 50px;
+   margin: 10px;
+}
+
+/* TODO Add Hover grow to this and delete the other */
