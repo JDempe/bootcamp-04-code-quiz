@@ -14,8 +14,8 @@
 <body>
    <header>
       <!-- Has clock, has reset, has return to start? -->
-      <button>view highscores</button>
-      <button>reset</button>
+      <button id="viewhighscores">view highscores</button>
+      <button id="resetquiz">restart quiz</button>
    </header>
    <main>
       <!-- Has the start button, instructions -->
@@ -26,10 +26,11 @@
       </section>
 
       <section id="questions">
-         <p class="time">time left</p>
+         <p id="timer">90</p>
+         <p id="scoreboard">0</p>
          <!-- is a boxes section with a question, maybe an image? and the four questions -->
          <div>
-            <h2 class="titletext">QUESTION #</h2>
+            <h2 class="titletext">QUESTION <span>#</span></h2>
 
          </div>
 
@@ -42,9 +43,8 @@
             <button class="hvr-grow"></button>
             <button class="hvr-grow"></button>
          </div>
-
       </section>
-      <section id="enterscore">
+      <section id="scoreinput">
          <h2>enter score</h2>
          <p>score</p>
          <label for="fname">First name:</label>
@@ -54,23 +54,16 @@
       <section id="highscores">
          <h2>high score</h2>
          <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
          </ol>
+         <button>reset highscores</button>
       </section>
    </main>
    <footer>
       <!-- Just copyright -->
    </footer>
    <script src="./assets/js/script.js"></script>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 
 </html>
