@@ -16,11 +16,15 @@
       <!-- Has clock, has reset, has return to start? -->
       <h1>SCIENCE QUIZ</h1>
       <nav>
-         <button id="viewhighscores" class="blue-button"><span>View Highscores</span></button>
-         <button id="resetquiz" class="blue-button"><span>Restart Quiz</span></button>
+         <button id="viewhighscores"><span>View Highscores</span></button>
+         <button id="resetquiz"><span>Restart Quiz</span></button>
       </nav>
    </header>
    <main>
+      <div id="scoreboard"  class="hide">
+         <p id="score">Score: <span>0</span></p>
+         <p id="timer">Time: <span>90.0</span></p>
+      </div>
       <!-- Has the start button, instructions -->
       <section id="instructions">
          <h2>INSTRUCTIONS</h2>
@@ -28,16 +32,11 @@
          <p>For every incorrect question, 15 seconds will be removed from the clock.</p>
          <p>The quiz will end when the time is out or all questions have been answered.</p>
          <p>Click the start button to begin.</p>
-         <button class="blue-button">START QUIZ</button>
+         <button>START QUIZ</button>
       </section>
       <section id="questions" class="hide">
-         <p id="timer">90</p>
-         <p id="scoreboard">0</p>
          <!-- is a boxes section with a question, maybe an image? and the four questions -->
-         <div>
-            <h2 class="titletext">QUESTION <span>#</span></h2>
-         </div>
-
+         <h2 class="titletext">QUESTION <span>#</span></h2>
          <p class="questiontext">question text</p>
          <div class="questiondiv">
             <button class="hvr-grow blue-button"></button>
@@ -49,27 +48,30 @@
          </div>
       </section>
       <section id="scoreinput" class="hide">
-         <h2>enter score</h2>
+
+         <h2>submit score</h2>
          <div>
-            <p>Your score is <span></span>.</p>
             <label for="fname">Initials:</label>
             <input type="text" id="fname" name="fname" maxlength="3">
-            <button>enter</button>
          </div>
+         <button>enter</button>
       </section>
       <section id="highscores" class="hide">
-         <h2>HIGH SCORES</h2>
-         <table>
-            <thead>
-               <tr>
-                  <th>Rank</th>
-                  <th>Name</th>
-                  <th>Score</th>
-               </tr>
-            </thead>
-            <tbody>
-            </tbody>
-         </table>
+         <Div>
+            <h2>HIGH SCORES</h2>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Rank</th>
+                     <th>Name</th>
+                     <th>Score</th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+            </table>
+
+         </Div>
          <button>reset scores</button>
       </section>
    </main>
