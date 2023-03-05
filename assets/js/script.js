@@ -77,15 +77,25 @@ function startQuiz() {
    displayQuestion();
    changeView("questions");
 
+   // TODO find where this should actually go.
+   scoreEl.textContent = score;
+
    // Start the timer.
    let timerInterval = setInterval(function () {
       timeLeft -= 0.1;
       timeEl.textContent = timeLeft.toPrecision(3);
 
       // Stop the timer if it reaches 0 or the quiz is over (i.e. view changes).
-      if (timeLeft === 0 || document.getElementById("questions").style.display == "none") {
+      if (timeLeft <= 0.1) {
+         clearInterval(timerInterval);
+         changeView("scoreinput");
+      }
+
+      if (document.getElementById("questions").classList.contains("hide")) {
          clearInterval(timerInterval);
       }
+
+      console.log(timeLeft)
    }, 100);
 }
 
@@ -141,9 +151,6 @@ function enterScore() {
       return;
    }
 
-
-
-
    // Add the score to the high score list.
    if (names.length == 0) {
       names.push([nameInput.value, score]);
@@ -175,7 +182,7 @@ function enterScore() {
 }
 
 function displayHighScores() {
-   var highScoreListChild = document.querySelectorAll("#highscores ol li");
+   let highScoreListChild = document.querySelectorAll("#highscores ol li");
    highScoreListChild.forEach(element => { element.remove() });
 
    names.forEach((item) => {
@@ -188,6 +195,7 @@ function displayHighScores() {
 }
 // View the high scores.
 function viewHighScores() {
+   displayHighScores();
    changeView("highscores");
 }
 
@@ -212,9 +220,9 @@ function resetHighScores() {
 function changeView(viewToShow) {
    viewIDs.forEach(element => {
       if (viewToShow == element) {
-         document.getElementById(element).style.display = "block";
+         document.getElementById(element).classList.remove("hide");
       } else {
-         document.getElementById(element).style.display = "none";
+         document.getElementById(element).classList.add("hide");
       }
    });
 }
