@@ -14,56 +14,69 @@
 <body>
    <header>
       <!-- Has clock, has reset, has return to start? -->
-      <button id="viewhighscores">view highscores</button>
-      <button id="resetquiz">restart quiz</button>
+      <h1>SCIENCE QUIZ</h1>
+      <nav>
+         <button id="viewhighscores" class="blue-button"><span>View Highscores</span></button>
+         <button id="resetquiz" class="blue-button"><span>Restart Quiz</span></button>
+      </nav>
    </header>
    <main>
       <!-- Has the start button, instructions -->
       <section id="instructions">
-         <h1>SCIENCE QUIZ</h1>
-         <p>description of the rules</p>
-         <button>START QUIZ</button>
+         <h2>INSTRUCTIONS</h2>
+         <p>You have 90 seconds to complete the Quiz.</p>
+         <p>For every incorrect question, 15 seconds will be removed from the clock.</p>
+         <p>The quiz will end when the time is out or all questions have been answered.</p>
+         <p>Click the start button to begin.</p>
+         <button class="blue-button">START QUIZ</button>
       </section>
-
-      <section id="questions">
+      <section id="questions" class="hide">
          <p id="timer">90</p>
          <p id="scoreboard">0</p>
          <!-- is a boxes section with a question, maybe an image? and the four questions -->
          <div>
             <h2 class="titletext">QUESTION <span>#</span></h2>
-
          </div>
 
          <p class="questiontext">question text</p>
          <div class="questiondiv">
-            <button class="hvr-grow"></button>
-            <button class="hvr-grow"></button>
+            <button class="hvr-grow blue-button"></button>
+            <button class="hvr-grow blue-button"></button>
          </div>
          <div class="questiondiv">
-            <button class="hvr-grow"></button>
-            <button class="hvr-grow"></button>
+            <button class="hvr-grow blue-button"></button>
+            <button class="hvr-grow blue-button"></button>
          </div>
       </section>
-      <section id="scoreinput">
+      <section id="scoreinput" class="hide">
          <h2>enter score</h2>
-         <p>score</p>
-         <label for="fname">First name:</label>
-         <input type="text" id="fname" name="fname">
-         <button>enter</button>
+         <div>
+            <p>Your score is <span></span>.</p>
+            <label for="fname">Initials:</label>
+            <input type="text" id="fname" name="fname" maxlength="3">
+            <button>enter</button>
+         </div>
       </section>
-      <section id="highscores">
-         <h2>high score</h2>
-         <ol>
-         </ol>
-         <button>reset highscores</button>
+      <section id="highscores" class="hide">
+         <h2>HIGH SCORES</h2>
+         <table>
+            <thead>
+               <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Score</th>
+               </tr>
+            </thead>
+            <tbody>
+            </tbody>
+         </table>
+         <button>reset scores</button>
       </section>
    </main>
    <footer>
       <!-- Just copyright -->
    </footer>
    <script src="./assets/js/script.js"></script>
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 
 </html>
