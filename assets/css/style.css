@@ -40,6 +40,7 @@ button {
   font-weight: 500;
   border-radius: 3px;
   padding: 10px 16px;
+  margin: 5px;
   border-radius: 4px;
   color: #fff;
   background: var(--accent-color);
@@ -58,7 +59,7 @@ button {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.blue-button:hover {
+button:hover {
   background: var(--highlight-color);
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
@@ -71,15 +72,15 @@ h1 {
 }
 
 h2 {
-  margin: 0px;
-  padding-top: 20px;
   font-size: 30px;
 }
 
 main {
   position: relative;
   margin: auto;
-  width: 60%;
+  min-width: 60%;
+  max-width: 80%;
+  width: fit-content;
   height: auto;
   min-height: 300px;
   border-color: var(--accent-color);
@@ -87,98 +88,126 @@ main {
   border-style: solid;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
+  margin: 0 auto 20px auto;
 }
 
+/* SCOREBOARD */
+#scoreboard {
+   display: flex;
+   justify-content: space-evenly;
+   position: sticky;
+   top: 0;
+   z-index: 999999;
+   background-color: rgb(60, 60, 60);
+   color: white;
+   margin: auto;
+   width: 60%;
+   border-color: var(--accent-color);
+   border-width: 5px;
+   border-style: solid;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 20px;
+   border-top: none;
+ }
+ 
+ #score {
+   margin: 10px;
+   width: 100px;
+   text-align: left;
+ }
+ 
+ #timer {
+   margin: 10px;
+   width: 100px;
+   text-align: left;
+ }
+
+ /* All Sections */
 main section {
-  min-height: inherit;
-  height: inherit;
-
-}
-
-#instructions {
   display: flex;
   flex-direction: column;
-    justify-content: space-between;
+  justify-content: space-between;
+  min-height: inherit;
+  width: 100%;
+  align-items: center;
+  margin: 20px 0px;
 }
 
+/* INSTRUCTIONS PAGE */
 #instructions button {
   margin: 10px auto;
   width: fit-content;
 }
 
 #instructions p {
-   padding: 10px 20px;
+  padding: 10px 20px;
 }
 
-#scoreinput {
-}
 
-#highscores {
-  margin: 0px auto;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-content: center; */
-  align-items: center;
-}
 
-#highscores ol {
-  margin: 0px;
-  padding: 10px 0px;
-  width: fit-content;
-}
-
-th{
-  padding: 10px 5px 0px 5px;
-}
-
-#highscores button {
-   width: fit-content;
-   font-size: 15px;
-   padding: 4px 8px;
-   margin: 10px;
-}
-
-#scoreinput div {
-  justify-self: center;
-}
-
-#scoreboard {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 9;
-  margin: 20px;
-  text-align: end;
-}
-
-#timer {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  z-index: 9;
-  margin: 20px;
-  text-align: end;
-}
-
-section .questiondiv {
-  display: block;
-}
-
+/* QUESTIONS PAGE */
 .questiontext {
   display: block;
   margin: 20px;
 }
 
+/* RENAME */
+section .questiondiv {
+  display: block;
+  width: 100%;
+}
+
 #questions button {
   border-radius: 10px;
-  width: 150px;
+  width: 40%;
   height: 50px;
   margin: 10px;
 }
 
+/* INPUT SCORE PAGE */
+#scoreinput input {
+font-size: 20px;
+width: 100px;
+text-align: center;
+ }
+ 
+ /* HIGH SCORES PAGE */
+#highscores table {
+  margin: 0px;
+  padding: 10px 0px;
+  width: fit-content;
+}
+
+th {
+  padding: 10px 5px 0px 5px;
+}
+
+#highscores div {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 0px;
+   padding: 0px;
+}
+
+/* Reset High Scores Button */
+#highscores button {
+  width: fit-content;
+  font-size: 15px;
+  padding: 4px 8px;
+  margin: 10px;
+}
+
+/* HIDE PAGES CLASS */
 .hide {
   display: none !important;
 }
 
-/* TODO Add Hover grow to this and delete the other */
+.correct {
+  background-color: rgb(3, 160, 3) !important;
+}
+
+.incorrect {
+  background-color: rgb(196, 5, 5) !important;
+}
