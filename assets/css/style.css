@@ -16,7 +16,9 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  background-image: url(../images/vecteezy_paper-art-of-solar-system-circle-background-the-planets-are_7000683.jpg);
+  /* "https://www.vecteezy.com/free-vector/science-background"
+  Science Background Vectors by Vecteezy */
+  background-image: url(../images/vecteezy_paper-art-of-solar-system-circle-background-the-planets.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -31,20 +33,19 @@ header {
 
 /* https://getcssscan.com/css-buttons-examples */
 /* Button 64 */
-
-nav button {
+button {
   display: inline-block;
   outline: none;
   cursor: pointer;
   font-weight: 500;
   border-radius: 3px;
-  padding: 0 16px;
+  padding: 10px 16px;
   border-radius: 4px;
   color: #fff;
   background: var(--accent-color);
   line-height: 1.15;
   font-size: 14px;
-  height: 36px;
+  height: fit-content;
   word-spacing: 0px;
   letter-spacing: 0.0892857143em;
   text-decoration: none;
@@ -57,7 +58,7 @@ nav button {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-nav button:hover {
+.blue-button:hover {
   background: var(--highlight-color);
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
@@ -72,13 +73,13 @@ h1 {
 h2 {
   margin: 0px;
   padding-top: 20px;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 main {
   position: relative;
   margin: auto;
-  width: 50%;
+  width: 60%;
   height: auto;
   min-height: 300px;
   border-color: var(--accent-color);
@@ -101,21 +102,12 @@ main section {
 }
 
 #instructions button {
-  /* margin: auto; */
+  margin: 10px auto;
   width: fit-content;
-  
 }
 
 #instructions p {
-   padding: 0px 20px;
-}
-
-#questions button {
-  border-style: solid;
-  border-width: 3px;
-  border-color: #767676;
-  background-color: rgba(226, 226, 226, 0.922);
-  /* font-weight: bold; */
+   padding: 10px 20px;
 }
 
 #scoreinput {
@@ -136,8 +128,15 @@ main section {
   width: fit-content;
 }
 
+th{
+  padding: 10px 5px 0px 5px;
+}
+
 #highscores button {
    width: fit-content;
+   font-size: 15px;
+   padding: 4px 8px;
+   margin: 10px;
 }
 
 #scoreinput div {
@@ -163,7 +162,7 @@ main section {
 }
 
 section .questiondiv {
-  display: inline-block;
+  display: block;
 }
 
 .questiontext {

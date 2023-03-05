@@ -31,6 +31,7 @@ var timeLeft = 90;
 var score = 0;
 var currentQuestion = 0;
 var shuffledQuestions = [];
+const highScoresHeader = ["Rank", "Name", "Score"];
 var highScores = [];
 var names = (JSON.parse(localStorage.getItem("names")) === null) ? [] : JSON.parse(localStorage.getItem("names"));
 
@@ -46,7 +47,8 @@ var timeEl = document.querySelector("#timer");
 var scoreEl = document.querySelector("#scoreboard");
 
 // Score input view
-var scoreInput = document.querySelector("#scoreinput p");
+// TODO Rename this to something more descriptive.
+var scoreInput = document.querySelector("#scoreinput p span");
 var nameInput = document.querySelector("#scoreinput input");
 var enterScoreButton = document.querySelector("#scoreinput button");
 
@@ -65,7 +67,7 @@ var views = (document.querySelectorAll("main section")).forEach(element => { vie
 startButton.addEventListener("click", startQuiz);
 answerButtons.forEach(element => { element.addEventListener("click", checkAnswer) });
 enterScoreButton.addEventListener("click", enterScore);
-viewHighScoresButton.addEventListener("click", viewHighScores);
+viewHighScoresButton.addEventListener("click", function(){populateHighScores(); changeView("highscores");});
 resetQuizButton.addEventListener("click", resetQuiz);
 resetHighScoresButton.addEventListener("click", resetHighScores);
 
@@ -88,6 +90,7 @@ function startQuiz() {
       // Stop the timer if it reaches 0 or the quiz is over (i.e. view changes).
       if (timeLeft <= 0.1) {
          clearInterval(timerInterval);
+         scoreInput.textContent = score;
          changeView("scoreinput");
       }
 
@@ -126,19 +129,22 @@ function checkAnswer() {
    if (currentQuestion < shuffledQuestions.length) {
       displayQuestion()
    } else {
-      console.log("Quiz over");
-      scoreInput.textContent = "Your score is " + score + "."
+      scoreInput.textContent = score;
       // add in the enter score screen
       changeView("scoreinput");
    }
 }
 
+function goToScoreInput() {
+
+   changeView("scoreinput");
+}
+
 // Enter the score into the high score list.
 function enterScore() {
-   // make sure the name is valid; if not, return.
 
+   // make sure the name is valid; if not, return.
    let input = nameInput.value.trim();
-   console.log(parseFloat(input))
    try {
       if (input != "" && input != null && isNaN(parseFloat(input))) {
             nameInput.value = input; 
@@ -151,7 +157,7 @@ function enterScore() {
       return;
    }
 
-   // Add the score to the high score list.
+   // Add the score to the high score list array.
    if (names.length == 0) {
       names.push([nameInput.value, score]);
    }
@@ -175,28 +181,21 @@ function enterScore() {
    localStorage.setItem("names", JSON.stringify(names));
 
    // Display the high score list.
-   displayHighScores();
+   populateHighScores();
 
    // Go to the high score list view.
    changeView("highscores");
 }
 
-function displayHighScores() {
-   let highScoreListChild = document.querySelectorAll("#highscores ol li");
-   highScoreListChild.forEach(element => { element.remove() });
+// Populate the High Scores table with the names array.
+function populateHighScores() {
+let highScoreTable = document.querySelector("#highscores tbody");
 
-   names.forEach((item) => {
-      let li = document.createElement("li");
-      li.innerText = item;
-      highScoreList.appendChild(li);
-   })
-
-
+highScoreTable.innerHTML = "";
+for (let i = 0; i < names.length; i++) {
+highScoreTable.insertRow(i).innerHTML = `<td>${i+1}</td><td>${names[i][0]}</td><td>${names[i][1]}</td>`;
 }
-// View the high scores.
-function viewHighScores() {
-   displayHighScores();
-   changeView("highscores");
+
 }
 
 // Reset the quiz.
@@ -213,7 +212,7 @@ function resetHighScores() {
    localStorage.removeItem("names");
    localStorage.clear();
    names = [];
-   displayHighScores();
+   populateHighScores();
 }
 
 // Show the provided view and hides all the others.
