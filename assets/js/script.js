@@ -56,7 +56,7 @@ var startButton = document.querySelector("#instructions button");
 
 // Questions view
 var questionNumber = document.querySelector("#questions h2 span");
-var questionText = document.querySelector("#questions .questiontext");
+var questionText = document.querySelector("#questions p");
 var answerButtons = document.querySelectorAll("#questions button");
 
 // Score input view
