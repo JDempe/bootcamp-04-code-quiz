@@ -103,6 +103,7 @@ function startQuiz() {
     // Stop the timer if it reaches 0 or the quiz is over (i.e. view changes).
     if (timeLeft <= 0.1) {
       clearInterval(timerInterval);
+      timeEl.textContent = 0;
       changeView("scoreinput");
     }
 
