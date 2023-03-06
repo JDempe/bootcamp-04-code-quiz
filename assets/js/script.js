@@ -39,15 +39,11 @@ const questions = [
 ];
 
 // **GLOBAL VARIABLES**
-// maybe put timeleft into startquiz function?
 var timeLeft = 90;
 var score = 0;
 var currentQuestion = 0;
 var shuffledQuestions = [];
-var names =
-  JSON.parse(localStorage.getItem("names")) === null
-    ? []
-    : JSON.parse(localStorage.getItem("names"));
+var names = JSON.parse(localStorage.getItem("names")) === null ? [] : JSON.parse(localStorage.getItem("names"));
 
 //  **DOM ELEMENTS**
 // Scoreboard
@@ -72,7 +68,7 @@ var viewHighScoresButton = document.querySelector("#viewhighscores");
 var resetQuizButton = document.querySelector("#resetquiz");
 var resetHighScoresButton = document.querySelector("#highscores button");
 
-// collecting all the views into an array.  Is this worth it?  Or just add manually?
+// Collecting all the views into an array.
 var viewIDs = [];
 var views = document.querySelectorAll("main section").forEach((element) => {
   viewIDs.push(element.id);
@@ -99,9 +95,6 @@ function startQuiz() {
   displayQuestion();
   changeView("questions");
 
-  // TODO find where this should actually go.
-  scoreEl.textContent = score;
-
   // Start the timer.
   let timerInterval = setInterval(function () {
     timeLeft -= 0.1;
@@ -116,8 +109,6 @@ function startQuiz() {
     if (document.getElementById("questions").classList.contains("hide")) {
       clearInterval(timerInterval);
     }
-
-    console.log(timeLeft);
   }, 100);
 }
 
@@ -154,16 +145,22 @@ function checkAnswer() {
   }
 }
 
+// Change the color of the scoreboard to indicate if the answer was correct or incorrect.
+var colorChangeTimeout;
 function answerIndicator(isRight) {
+ if (scoreboardEl.classList.contains("correct") || scoreboardEl.classList.contains("incorrect")) {
+      clearTimeout(colorChangeTimeout);
+    }
+
   if (isRight) {
-     scoreboardEl.classList.remove("incorrect");
+    scoreboardEl.classList.remove("incorrect");
     scoreboardEl.classList.add("correct");
   } else {
-     scoreboardEl.classList.remove("correct");
+    scoreboardEl.classList.remove("correct");
     scoreboardEl.classList.add("incorrect");
   }
 
-  setTimeout(function () {
+  colorChangeTimeout = setTimeout(function () {
     scoreboardEl.classList.remove("correct");
     scoreboardEl.classList.remove("incorrect");
   }, 2000);
@@ -230,7 +227,6 @@ function populateHighScores() {
 
 // Reset the High Scores table.
 function resetHighScores() {
-  // TODO add in the ability to clear the high scores.
   localStorage.removeItem("names");
   localStorage.clear();
   names = [];
@@ -240,9 +236,11 @@ function resetHighScores() {
 // Reset the quiz.
 function resetQuiz() {
   score = 0;
-  currentQuestion = 0;
   timeLeft = 90;
+  currentQuestion = 0;
   nameInput.value = "";
+  scoreEl.textContent = score;
+  timeEl.textContent = timeLeft;
   changeView("instructions");
 }
 

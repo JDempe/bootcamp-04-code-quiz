@@ -3,15 +3,17 @@
   --highlight-color: #040852;
 }
 
+/* Special Font from https://www.fontspace.com/category/science */
 @font-face {
-  font-family: "CASANOVA"; /*a name to be used later*/
-  src: url(./fonts/CasanovaScotia-Xm0K.ttf); /*URL to font*/
+  font-family: "CASANOVA SCOTIA";
+  src: url(./fonts/CasanovaScotia-Xm0K.ttf);
 }
 
 * {
-  font-family: "CASANOVA", sans-serif;
+  font-family: "CASANOVA SCOTIA", sans-serif;
 }
 
+/* SEMANTIC ELEMENTS */
 body {
   width: 100%;
   height: 100%;
@@ -29,6 +31,24 @@ header {
   top: 0;
   width: 100%;
   height: auto;
+}
+
+footer {
+  padding: 20px 0px;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  color: #ffffff;  
+}
+
+h1 {
+  padding: 5px;
+  font-size: 70px;
+  color: white;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 /* https://getcssscan.com/css-buttons-examples */
@@ -65,21 +85,11 @@ button:hover {
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
 }
 
-h1 {
-  padding: 5px;
-  font-size: 70px;
-  color: white;
-}
-
-h2 {
-  font-size: 30px;
-}
-
 main {
   position: relative;
   margin: auto;
   min-width: 60%;
-  max-width: 80%;
+  max-width: 90%;
   width: fit-content;
   height: auto;
   min-height: 300px;
@@ -91,7 +101,20 @@ main {
   margin: 0 auto 20px auto;
 }
 
+ main section {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   min-height: inherit;
+   width: 100%;
+   align-items: center;
+   margin: 20px 0px;
+   padding: 0px 10px;
+   box-sizing: border-box;
+ }
+ 
 /* SCOREBOARD */
+/* Scoreboard Box */
 #scoreboard {
    display: flex;
    justify-content: space-evenly;
@@ -110,61 +133,49 @@ main {
    border-top: none;
  }
  
- #score {
+ /* Score and Timer Counters */
+ #score, #timer {
    margin: 10px;
    width: 100px;
    text-align: left;
  }
- 
- #timer {
-   margin: 10px;
-   width: 100px;
-   text-align: left;
- }
-
- /* All Sections */
-main section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: inherit;
-  width: 100%;
-  align-items: center;
-  margin: 20px 0px;
-}
 
 /* INSTRUCTIONS PAGE */
+/* Description of Rules */
+#instructions p {
+  padding: 10px;
+}
+
+/* Start Button */
 #instructions button {
   margin: 10px auto;
   width: fit-content;
 }
 
-#instructions p {
-  padding: 10px 20px;
-}
-
-
-
 /* QUESTIONS PAGE */
-.questiontext {
+/* Question */
+#questions .questiontext {
   display: block;
   margin: 20px;
 }
 
-/* RENAME */
-section .questiondiv {
+/* Div to keep answer buttons in 2's */
+#questions .questiondiv {
   display: block;
   width: 100%;
 }
 
+/* Answer buttons */
 #questions button {
   border-radius: 10px;
   width: 40%;
+  min-height: fit-content;
   height: 50px;
   margin: 10px;
 }
 
 /* INPUT SCORE PAGE */
+/* Initials Entry box and label */
 #scoreinput input {
 font-size: 20px;
 width: 100px;
@@ -172,38 +183,36 @@ text-align: center;
  }
  
  /* HIGH SCORES PAGE */
+ /* High scores table */
 #highscores table {
-  margin: 0px;
   padding: 10px 0px;
   width: fit-content;
+  font-size: 19px;
 }
 
+/* Table row highlight */
+tr:hover {background-color: #ddd;}
+
+/* Table header row */
 th {
   padding: 10px 5px 0px 5px;
+  background-color: #ffffff;
 }
 
+/* Div to have title and table top aligned */
 #highscores div {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   margin: 0px;
-   padding: 0px;
 }
 
-/* Reset High Scores Button */
-#highscores button {
-  width: fit-content;
-  font-size: 15px;
-  padding: 4px 8px;
-  margin: 10px;
-}
-
-/* HIDE PAGES CLASS */
+/* HIDE PAGE CLASS */
 .hide {
   display: none !important;
 }
 
+/* CORRECT/INCORRECT ANSWER ANIMATION */
 .correct {
   background-color: rgb(3, 160, 3) !important;
 }
