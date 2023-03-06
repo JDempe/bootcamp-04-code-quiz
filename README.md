@@ -58,6 +58,8 @@ The below resources contributed to the project.
   
 - [Ian Lunn](https://github.com/IanLunn) created an awesome library called [Hover.css](https://twitter.com/davidmacd) that adds some plug and play css animation classes.  I used this for some of the moving icons on my page.
 
+- [Coding Beauty](https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-numbers/) has a tutorial on how to check if a string contains only letters.  This was used to confirm that the user entered only letters when they entered their initials.
+  
 ### Collaborators
 
 On this project, there was no peer review.

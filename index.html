@@ -32,6 +32,7 @@
          <p>You have 90 seconds to complete the Quiz.</p>
          <p>For every incorrect question, 15 seconds will be removed from the clock.</p>
          <p>The quiz will end when the time is out or all questions have been answered.</p>
+         <p>Your score will be adjusted by a multiplier based on the remaining time when the quiz ends.  It starts as a 1x multiplier.  For every 30s left the multiplier will increase by 1. </p>
          <p>Click the start button to begin.</p>
          <button>Start Quiz</button>
       </section>
@@ -51,6 +52,10 @@
       <!-- Submit Score Page -->
       <section id="scoreinput" class="hide">
          <h2>SUBMIT SCORE</h2>
+         <div>
+            <p id="multiplier">Multiplier: <span></span></p>
+            <p id="calculatedscore">Calculated Score: <span></span></p>
+         </div>
          <div>
             <label for="fname">Initials:</label>
             <input type="text" id="fname" name="fname" maxlength="3">
