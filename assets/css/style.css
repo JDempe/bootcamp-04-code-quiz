@@ -38,7 +38,7 @@ footer {
   bottom: 0;
   width: 100%;
   height: auto;
-  color: #ffffff;  
+  color: #ffffff;
 }
 
 h1 {
@@ -79,10 +79,12 @@ button {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-  background: var(--highlight-color);
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
-    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+@media (hover: hover) {
+  button:hover {
+    background: var(--highlight-color);
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  }
 }
 
 main {
@@ -101,44 +103,46 @@ main {
   margin: 0 auto 20px auto;
 }
 
- main section {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   min-height: inherit;
-   width: 100%;
-   align-items: center;
-   margin: 20px 0px;
-   padding: 0px 10px;
-   box-sizing: border-box;
- }
- 
+main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: inherit;
+  width: 100%;
+  align-items: center;
+  margin: 20px 0px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
 /* SCOREBOARD */
 /* Scoreboard Box */
 #scoreboard {
-   display: flex;
-   justify-content: space-evenly;
-   position: sticky;
-   top: 0;
-   z-index: 999999;
-   background-color: rgb(60, 60, 60);
-   color: white;
-   margin: auto;
-   width: 60%;
-   border-color: var(--accent-color);
-   border-width: 5px;
-   border-style: solid;
-   border-bottom-left-radius: 20px;
-   border-bottom-right-radius: 20px;
-   border-top: none;
- }
- 
- /* Score and Timer Counters */
- #score, #timer {
-   margin: 10px;
-   width: 100px;
-   text-align: left;
- }
+  display: flex;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  background-color: rgb(60, 60, 60);
+  color: white;
+  margin: auto;
+  min-width: 60%;
+  width: fit-content;
+  border-color: var(--accent-color);
+  border-width: 5px;
+  border-style: solid;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top: none;
+}
+
+/* Score and Timer Counters */
+#score,
+#timer {
+  margin: 10px;
+  width: 100px;
+  text-align: left;
+}
 
 /* INSTRUCTIONS PAGE */
 /* Description of Rules */
@@ -177,13 +181,13 @@ main {
 /* INPUT SCORE PAGE */
 /* Initials Entry box and label */
 #scoreinput input {
-font-size: 20px;
-width: 100px;
-text-align: center;
- }
- 
- /* HIGH SCORES PAGE */
- /* High scores table */
+  font-size: 20px;
+  width: 100px;
+  text-align: center;
+}
+
+/* HIGH SCORES PAGE */
+/* High scores table */
 #highscores table {
   padding: 10px 0px;
   width: fit-content;
@@ -191,7 +195,9 @@ text-align: center;
 }
 
 /* Table row highlight */
-tr:hover {background-color: #ddd;}
+tr:hover {
+  background-color: #ddd;
+}
 
 /* Table header row */
 th {
@@ -201,10 +207,10 @@ th {
 
 /* Div to have title and table top aligned */
 #highscores div {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* HIDE PAGE CLASS */
@@ -219,4 +225,30 @@ th {
 
 .incorrect {
   background-color: rgb(196, 5, 5) !important;
+}
+
+/* * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover */
+
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+@media (hover: hover) {
+  .hvr-grow:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 }
