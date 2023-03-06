@@ -185,9 +185,9 @@ main section {
 /* HIGH SCORES PAGE */
 /* High scores table */
 #highscores table {
-  padding: 10px 0px;
-  width: fit-content;
+  margin-top: 10px;
   font-size: 19px;
+  width: 270px;
 }
 
 /* Table row highlight */
@@ -197,7 +197,7 @@ tr:hover {
 
 /* Table header row */
 th {
-  padding: 10px 5px 0px 5px;
+  padding-bottom: 5px;
   background-color: #ffffff;
 }
 
