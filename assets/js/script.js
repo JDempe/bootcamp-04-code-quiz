@@ -41,9 +41,13 @@ const questions = [
 // **GLOBAL VARIABLES**
 var timeLeft = 90;
 var score = 0;
+var finalScore = 0;
 var currentQuestion = 0;
 var shuffledQuestions = [];
-var names = JSON.parse(localStorage.getItem("names")) === null ? [] : JSON.parse(localStorage.getItem("names"));
+var names =
+  JSON.parse(localStorage.getItem("names")) === null
+    ? []
+    : JSON.parse(localStorage.getItem("names"));
 
 //  **DOM ELEMENTS**
 // Scoreboard
@@ -62,6 +66,8 @@ var answerButtons = document.querySelectorAll("#questions button");
 // Score input view
 var nameInput = document.querySelector("#scoreinput input");
 var enterScoreButton = document.querySelector("#scoreinput button");
+var multiplierEl = document.querySelector("#multiplier span");
+var calcedScoreEl = document.querySelector("#calculatedscore span");
 
 // High scores view
 var viewHighScoresButton = document.querySelector("#viewhighscores");
@@ -142,6 +148,18 @@ function checkAnswer() {
   if (currentQuestion < shuffledQuestions.length) {
     displayQuestion();
   } else {
+    // Calculate the modifier based on time left.  If no time left, modifier is 1.
+    let modifier = Math.ceil(Math.floor(timeLeft) / 30);
+    if (modifier < 1) {
+      modifier = 1;
+    }
+
+    // Calculate the score.
+    finalScore = score * modifier;
+
+    // Display the score input view.
+    multiplierEl.textContent = modifier;
+    calcedScoreEl.textContent = finalScore;
     changeView("scoreinput");
   }
 }
@@ -149,9 +167,12 @@ function checkAnswer() {
 // Change the color of the scoreboard to indicate if the answer was correct or incorrect.
 var colorChangeTimeout;
 function answerIndicator(isRight) {
- if (scoreboardEl.classList.contains("correct") || scoreboardEl.classList.contains("incorrect")) {
-      clearTimeout(colorChangeTimeout);
-    }
+  if (
+    scoreboardEl.classList.contains("correct") ||
+    scoreboardEl.classList.contains("incorrect")
+  ) {
+    clearTimeout(colorChangeTimeout);
+  }
 
   if (isRight) {
     scoreboardEl.classList.remove("incorrect");
@@ -169,31 +190,35 @@ function answerIndicator(isRight) {
 
 // Enter the score into the names array.
 function enterScore() {
-  // TODO Split string up and check each for a number.
   // make sure the name is valid; if not, return.
   let input = nameInput.value.trim();
   try {
-    if (input != "" && input != null && isNaN(parseFloat(input))) {
+    if (input != "" && input != null && /^[A-Za-z]*$/.test(input)) {
       nameInput.value = input;
     } else {
       throw "error";
     }
   } catch (error) {
-    window.alert("Please enter a valid name.");
+    window.alert(
+      "Please enter a valid name.  It must contain only letters and cannot be blank."
+    );
     return;
   }
 
-  // Add the score to the high score list array.
+  // Add the final score to the high score list array.
   if (names.length == 0) {
-    names.push([nameInput.value, score]);
+    names.push([nameInput.value, finalScore]);
   } else {
     names.every((element) => {
-      if (element[1] >= score && names.indexOf(element) == names.length - 1) {
-        names.push([nameInput.value, score]);
-      } else if (element[1] >= score) {
+      if (
+        element[1] >= finalScore &&
+        names.indexOf(element) == names.length - 1
+      ) {
+        names.push([nameInput.value, finalScore]);
+      } else if (element[1] >= finalScore) {
         return true;
       } else {
-        names.splice(names.indexOf(element), 0, [nameInput.value, score]);
+        names.splice(names.indexOf(element), 0, [nameInput.value, finalScore]);
         return false;
       }
     });
@@ -237,6 +262,7 @@ function resetHighScores() {
 // Reset the quiz.
 function resetQuiz() {
   score = 0;
+  finalScore = 0;
   timeLeft = 90;
   currentQuestion = 0;
   nameInput.value = "";
