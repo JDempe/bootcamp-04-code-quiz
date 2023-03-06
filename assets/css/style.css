@@ -57,7 +57,6 @@ button {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  font-weight: 500;
   border-radius: 3px;
   padding: 10px 16px;
   margin: 5px;
@@ -71,7 +70,6 @@ button {
   letter-spacing: 0.0892857143em;
   text-decoration: none;
   text-transform: uppercase;
-  min-width: 64px;
   border: none;
   text-align: center;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
@@ -169,7 +167,7 @@ main section {
 /* Answer buttons */
 #questions button {
   border-radius: 10px;
-  width: 40%;
+  width: 42%;
   min-height: fit-content;
   height: 50px;
   margin: 10px;
