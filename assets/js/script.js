@@ -110,6 +110,7 @@ function startQuiz() {
     if (timeLeft <= 0.1) {
       clearInterval(timerInterval);
       timeEl.textContent = 0;
+      calculateScore();
       changeView("scoreinput");
     }
 
@@ -149,19 +150,24 @@ function checkAnswer() {
     displayQuestion();
   } else {
     // Calculate the modifier based on time left.  If no time left, modifier is 1.
-    let modifier = Math.ceil(Math.floor(timeLeft) / 30);
-    if (modifier < 1) {
-      modifier = 1;
-    }
-
-    // Calculate the score.
-    finalScore = score * modifier;
-
-    // Display the score input view.
-    multiplierEl.textContent = modifier;
-    calcedScoreEl.textContent = finalScore;
+    calculateScore();
     changeView("scoreinput");
   }
+}
+
+function calculateScore() {
+  // Calculate the modifier based on time left.  If no time left, modifier is 1.
+  let modifier = Math.ceil(Math.floor(timeLeft) / 30);
+  if (modifier < 1) {
+    modifier = 1;
+  }
+
+  // Calculate the score.
+  finalScore = score * modifier;
+
+  // Display the score input view.
+  multiplierEl.textContent = modifier;
+  calcedScoreEl.textContent = finalScore;
 }
 
 // Change the color of the scoreboard to indicate if the answer was correct or incorrect.
